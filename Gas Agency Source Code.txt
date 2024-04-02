@@ -1,0 +1,62 @@
+
+
+         Cylinder
+
+         Save Code
+
+
+         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=GasDB;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("insert into cytab values(@cylinderid,@type,@capacity,@status)", con);
+            cmd.Parameters.AddWithValue("@CylinderID", int.Parse(textBox1.Text));
+            cmd.Parameters.AddWithValue("@Type", textBox2.Text);
+            cmd.Parameters.AddWithValue("@Capacity", textBox3.Text);
+            cmd.Parameters.AddWithValue("@Status", textBox4.Text);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Saved Successfully", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+         Add Code
+
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=GasDB;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from cytab", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+
+
+
+        Delete Code
+
+
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=GasDB;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("delete cytab where cylinderid=@cylinderid", con);
+            cmd.Parameters.AddWithValue("@CylinderID", int.Parse(textBox1.Text));
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Record Deleted Successfully", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+        Cylinder Load Code
+
+
+         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-HEEKBHE\SQLEXPRESS;Initial Catalog=GasDB;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from cytab", con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+
+
+
+        
